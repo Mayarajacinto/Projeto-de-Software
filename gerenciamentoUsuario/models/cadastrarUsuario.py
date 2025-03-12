@@ -6,8 +6,9 @@ class CadastroUsuario(models.Model):
     nome = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     cpf = models.CharField(max_length=11)
-    senha = models.CharField(max_length=50)
     status = models.ForeignKey('StatusUsuario', on_delete=models.DO_NOTHING)
+    usuario_comum = models.BooleanField(default=False)
+    usuario_adm = models.BooleanField(default=False)
     
     class Meta:
         db_table = 'CadastroUsuario'

@@ -16,9 +16,10 @@ class CadastrarUsuarioSerializer(serializers.ModelSerializer):
         fields = [
             'nome',
             'email',
-            'senha',
             'cpf',
             'status',
+            'usuario_comum',
+            'usuario_adm',
             'status_info'
         ]
         
