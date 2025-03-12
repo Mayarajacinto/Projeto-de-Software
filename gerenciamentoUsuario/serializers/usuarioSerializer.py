@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ..models import cadastrarUsuario, StatusUsuario
+from ..models import CadastroUsuario, StatusUsuario
 
 class StatusUsuarioSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,24 +9,19 @@ class StatusUsuarioSerializer(serializers.ModelSerializer):
         ]
         
 class CadastrarUsuarioSerializer(serializers.ModelSerializer):
-    statusUsuario = serializers.SerializerMethodField()
+    status_info = serializers.SerializerMethodField()
     
     class Meta:
-        model = cadastrarUsuario
+        model = CadastroUsuario
         fields = [
             'nome',
             'email',
             'senha',
-            'statusUsuario'
-            'cpf'
-            'status'
+            'cpf',
+            'status',
+            'status_info'
         ]
         
-    def get_statusUsuario(self, obj):
-        return obj.statusUsuario.status
+    def get_status_info(self, obj):
+        return obj.status.status
     
-    def get_cadastrarUsuario(self, obj):
-        return obj.cadastrarUsuario.nome
-    
-    def get_cadastrarUsuario(self, obj):
-        return obj.cadastrarUsuario.cpf

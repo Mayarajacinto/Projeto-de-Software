@@ -5,9 +5,9 @@ class CadastroUsuario(models.Model):
     
     nome = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    cpf = models.BigIntegerField(unique=True)
+    cpf = models.CharField(max_length=11)
     senha = models.CharField(max_length=50)
-    status = models.ForeignKey(StatusUsuario, on_delete=models.DO_NOTHING)
+    status = models.ForeignKey('StatusUsuario', on_delete=models.DO_NOTHING)
     
     class Meta:
         db_table = 'CadastroUsuario'
@@ -19,5 +19,3 @@ class CadastroUsuario(models.Model):
     
     def __srt__(self):
         return self.status 
-    
-    

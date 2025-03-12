@@ -6,7 +6,7 @@ class Livro(models.Model):
     autor = models.CharField(max_length=100)
     ano = models.IntegerField(null=True, blank=True) #integerfield é um campo de número inteiro
     edicao = models.IntegerField(null=True, blank=True)
-    statusLivro = models.ForeignKey(StatusLivro, on_delete=models.DO_NOTHING)
+    statusLivro = models.ForeignKey('StatusLivro', on_delete=models.DO_NOTHING)
     
     class Meta:
         db_table = 'Livro'

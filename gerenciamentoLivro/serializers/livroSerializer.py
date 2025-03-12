@@ -9,7 +9,12 @@ class StatusLivroSerializer(serializers.ModelSerializer):
         ]
         
 class LivroSerializer(serializers.ModelSerializer):
-    statusLivro = serializers.SerializerMethodField()
+    statusLivro = serializers.SerializerMethodField(read_only=True)
+    statusLivro_id = serializers.PrimaryKeyRelatedField(
+        queryset=StatusLivro.objects.all(), 
+        source='statusLivro', 
+        write_only=True
+    )
     
     class Meta:
         model = Livro
@@ -18,7 +23,8 @@ class LivroSerializer(serializers.ModelSerializer):
             'autor',
             'ano',
             'edicao',
-            'statusLivro'
+            'statusLivro',
+            'statusLivro_id'
         ]
         
     def get_statusLivro(self, obj):
